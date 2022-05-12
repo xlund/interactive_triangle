@@ -20,6 +20,14 @@ class Circle {
   double get minY => y - radius;
   double get maxX => x + radius;
   double get maxY => y + radius;
+
+  bool isSelected(x, y) {
+    if (x >= minX && x <= maxX && y >= minY && y <= maxY) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 class _InteractiveTriangleState extends State<InteractiveTriangle> {
@@ -30,15 +38,15 @@ class _InteractiveTriangleState extends State<InteractiveTriangle> {
   bool _dragging = false;
 
   bool _insideCircle(double x, double y) {
-    if (x >= c1.minX && x <= c1.maxX && y >= c1.minY && c1.y <= c1.maxY) {
+    if (c1.isSelected(x, y)) {
       _selected = Selected.c1;
       return true;
     }
-    if (x >= c2.minX && x <= c2.maxX && y >= c2.minY && c2.y <= c2.maxY) {
+    if (c2.isSelected(x, y)) {
       _selected = Selected.c2;
       return true;
     }
-    if (x >= c3.minX && x <= c3.maxX && y >= c3.minY && c3.y <= c3.maxY) {
+    if (c3.isSelected(x, y)) {
       _selected = Selected.c3;
       return true;
     } else {
