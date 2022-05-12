@@ -74,7 +74,7 @@ class _MovablePointState extends State<MovablePoint> {
       child: Stack(
         children: [
           CustomPaint(
-            painter: PointPainter(cPos: Offset(xPos, yPos)),
+            painter: PointPainter(cPos: Offset(xPos, yPos), radius: radius),
             child: Container(),
           ),
           CustomPaint(
@@ -82,7 +82,7 @@ class _MovablePointState extends State<MovablePoint> {
             child: Container(),
           ),
           CustomPaint(
-            painter: PointPainter(cPos: Offset(xPos2, yPos2)),
+            painter: PointPainter(cPos: Offset(xPos2, yPos2), radius: radius),
             child: Container(),
           ),
           CustomPaint(
@@ -90,7 +90,7 @@ class _MovablePointState extends State<MovablePoint> {
             child: Container(),
           ),
           CustomPaint(
-            painter: PointPainter(cPos: Offset(xPos3, yPos3)),
+            painter: PointPainter(cPos: Offset(xPos3, yPos3), radius: radius),
             child: Container(),
           ),
           CustomPaint(
@@ -104,9 +104,10 @@ class _MovablePointState extends State<MovablePoint> {
 }
 
 class PointPainter extends CustomPainter {
-  PointPainter({required Offset this.cPos});
+  PointPainter({required this.cPos, required this.radius});
 
   Offset cPos;
+  double radius;
   @override
   void paint(Canvas canvas, Size size) {
     final Paint circlePainter = Paint()
@@ -114,7 +115,7 @@ class PointPainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..strokeWidth = 2;
 
-    canvas.drawCircle(cPos, 10, circlePainter);
+    canvas.drawCircle(cPos, radius, circlePainter);
   }
 
   @override
