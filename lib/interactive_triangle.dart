@@ -41,8 +41,6 @@ class _MovablePointState extends State<MovablePoint> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onPanStart: (details) {
-        print(_insideCircle(details.globalPosition.dx, details.globalPosition.dy));
-        print(_selected);
         _dragging = _insideCircle(details.globalPosition.dx, details.globalPosition.dy);
       },
       onPanEnd: (details) {
