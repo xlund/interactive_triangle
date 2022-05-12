@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interactive_triangle/interactive_triangle.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,10 +26,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('hello'),
-      ),
-    );
+    return const Scaffold(body: InteractiveTriangle());
   }
 }
