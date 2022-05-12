@@ -110,8 +110,7 @@ class PointPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final Paint circlePainter = Paint()
       ..color = Colors.white
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 2;
+      ..style = PaintingStyle.fill;
     final Paint strokePainter = Paint()
       ..color = Color(0xFFFF00CD)
       ..style = PaintingStyle.stroke
@@ -123,9 +122,6 @@ class PointPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(PointPainter oldDelegate) => true;
-
-  @override
-  bool shouldRebuildSemantics(PointPainter oldDelegate) => false;
 }
 
 class LinePainter extends CustomPainter {
