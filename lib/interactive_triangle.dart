@@ -17,19 +17,19 @@ class _MovablePointState extends State<MovablePoint> {
   double xPos3 = 300.0;
   double yPos3 = 300.0;
   Selected _selected = Selected.none;
-  int radius = 10;
+  double radius = 10;
   bool _dragging = false;
 
   bool _insideCircle(double x, double y) {
-    if (x >= xPos && x <= xPos + radius && y >= yPos && y <= yPos + radius) {
+    if (x >= xPos - radius && x <= xPos + radius && y >= yPos - radius && y <= yPos + radius) {
       _selected = Selected.c1;
       return true;
     }
-    if (x >= xPos2 && x <= xPos2 + radius && y >= yPos2 && y <= yPos2 + radius) {
+    if (x >= xPos2 - radius && x <= xPos2 + radius && y >= yPos2 - radius && y <= yPos2 + radius) {
       _selected = Selected.c2;
       return true;
     }
-    if (x >= xPos3 && x <= xPos3 + radius && y >= yPos3 && y <= yPos3 + radius) {
+    if (x >= xPos3 - radius && x <= xPos3 + radius && y >= yPos3 - radius && y <= yPos3 + radius) {
       _selected = Selected.c3;
       return true;
     } else {
