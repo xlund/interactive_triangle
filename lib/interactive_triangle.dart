@@ -12,10 +12,10 @@ enum Selected { none, c1, c2, c3 }
 class _MovablePointState extends State<MovablePoint> {
   double xPos = 100.0;
   double yPos = 100.0;
-  double xPos2 = 200.0;
+  double xPos2 = 150.0;
   double yPos2 = 200.0;
-  double xPos3 = 300.0;
-  double yPos3 = 300.0;
+  double xPos3 = 200.0;
+  double yPos3 = 100.0;
   Selected _selected = Selected.none;
   double radius = 10;
   bool _dragging = false;
@@ -74,15 +74,11 @@ class _MovablePointState extends State<MovablePoint> {
       child: Stack(
         children: [
           CustomPaint(
-            painter: PointPainter(cPos: Offset(xPos, yPos), radius: radius),
-            child: Container(),
-          ),
-          CustomPaint(
             painter: LinePainter(startPos: Offset(xPos, yPos), endPos: Offset(xPos2, yPos2)),
             child: Container(),
           ),
           CustomPaint(
-            painter: PointPainter(cPos: Offset(xPos2, yPos2), radius: radius),
+            painter: LinePainter(startPos: Offset(xPos3, yPos3), endPos: Offset(xPos, yPos)),
             child: Container(),
           ),
           CustomPaint(
@@ -90,11 +86,15 @@ class _MovablePointState extends State<MovablePoint> {
             child: Container(),
           ),
           CustomPaint(
-            painter: PointPainter(cPos: Offset(xPos3, yPos3), radius: radius),
+            painter: PointPainter(cPos: Offset(xPos, yPos), radius: radius),
             child: Container(),
           ),
           CustomPaint(
-            painter: LinePainter(startPos: Offset(xPos3, yPos3), endPos: Offset(xPos, yPos)),
+            painter: PointPainter(cPos: Offset(xPos2, yPos2), radius: radius),
+            child: Container(),
+          ),
+          CustomPaint(
+            painter: PointPainter(cPos: Offset(xPos3, yPos3), radius: radius),
             child: Container(),
           ),
         ],
@@ -111,11 +111,16 @@ class PointPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Paint circlePainter = Paint()
-      ..color = Colors.amber
+      ..color = Colors.white
       ..style = PaintingStyle.fill
+      ..strokeWidth = 2;
+    final Paint strokePainter = Paint()
+      ..color = Color(0xFFFF00CD)
+      ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
 
     canvas.drawCircle(cPos, radius, circlePainter);
+    canvas.drawCircle(cPos, radius, strokePainter);
   }
 
   @override
@@ -133,7 +138,7 @@ class LinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Paint linePainter = Paint()
-      ..color = Colors.amber
+      ..color = Color(0xFFFF00CD)
       ..style = PaintingStyle.fill
       ..strokeWidth = 2;
 
