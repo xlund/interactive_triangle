@@ -16,6 +16,10 @@ class Circle {
   Circle({required this.x, required this.y, this.radius = 10});
 
   Offset get offset => Offset(x, y);
+  double get minX => x - radius;
+  double get minY => y - radius;
+  double get maxX => x + radius;
+  double get maxY => y + radius;
 }
 
 class _MovablePointState extends State<MovablePoint> {
@@ -26,15 +30,15 @@ class _MovablePointState extends State<MovablePoint> {
   bool _dragging = false;
 
   bool _insideCircle(double x, double y) {
-    if (x >= c1.x - c1.radius && x <= c1.x + c1.radius && y >= c1.y - c1.radius && c1.y <= c1.y + c1.radius) {
+    if (x >= c1.minX && x <= c1.maxX && y >= c1.minY && c1.y <= c1.maxY) {
       _selected = Selected.c1;
       return true;
     }
-    if (x >= c2.x - c2.radius && x <= c2.x + c2.radius && y >= c2.y - c2.radius && c2.y <= c2.y + c1.radius) {
+    if (x >= c2.minX && x <= c2.maxX && y >= c2.minY && c2.y <= c2.maxY) {
       _selected = Selected.c2;
       return true;
     }
-    if (x >= c3.x - c3.radius && x <= c3.x + c3.radius && y >= c3.y - c3.radius && c3.y <= c3.y + c1.radius) {
+    if (x >= c3.minX && x <= c3.maxX && y >= c3.minY && c3.y <= c3.maxY) {
       _selected = Selected.c3;
       return true;
     } else {
