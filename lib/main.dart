@@ -26,6 +26,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: MovablePoint());
+    return const Scaffold(body: InteractiveTriangle());
   }
 }

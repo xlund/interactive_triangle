@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MovablePoint extends StatefulWidget {
-  const MovablePoint({Key? key}) : super(key: key);
+class InteractiveTriangle extends StatefulWidget {
+  const InteractiveTriangle({Key? key}) : super(key: key);
 
   @override
-  State<MovablePoint> createState() => _MovablePointState();
+  State<InteractiveTriangle> createState() => _InteractiveTriangleState();
 }
 
 enum Selected { none, c1, c2, c3 }
@@ -22,7 +22,7 @@ class Circle {
   double get maxY => y + radius;
 }
 
-class _MovablePointState extends State<MovablePoint> {
+class _InteractiveTriangleState extends State<InteractiveTriangle> {
   Circle c1 = Circle(x: 100.0, y: 100.0);
   Circle c2 = Circle(x: 150.0, y: 200.0);
   Circle c3 = Circle(x: 200.0, y: 100.0);
