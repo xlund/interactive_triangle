@@ -89,15 +89,15 @@ class _MovablePointState extends State<MovablePoint> {
             child: Container(),
           ),
           CustomPaint(
-            painter: PointPainter(cPos: Offset(c1.x, c1.y), radius: radius),
+            painter: PointPainter(cPos: Offset(c1.x, c1.y), radius: c1.radius),
             child: Container(),
           ),
           CustomPaint(
-            painter: PointPainter(cPos: Offset(c2.x, c2.y), radius: radius),
+            painter: PointPainter(cPos: Offset(c2.x, c2.y), radius: c2.radius),
             child: Container(),
           ),
           CustomPaint(
-            painter: PointPainter(cPos: Offset(c3.x, c3.y), radius: radius),
+            painter: PointPainter(cPos: Offset(c3.x, c3.y), radius: c3.radius),
             child: Container(),
           ),
         ],
