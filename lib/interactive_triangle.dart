@@ -93,15 +93,15 @@ class _InteractiveTriangleState extends State<InteractiveTriangle> {
             child: Container(),
           ),
           CustomPaint(
-            painter: LinePainter(startPos: c1.offset, endPos: c2.offset),
+            painter: LinePainter(start: c1.offset, end: c2.offset),
             child: Container(),
           ),
           CustomPaint(
-            painter: LinePainter(startPos: c3.offset, endPos: c1.offset),
+            painter: LinePainter(start: c3.offset, end: c1.offset),
             child: Container(),
           ),
           CustomPaint(
-            painter: LinePainter(startPos: c2.offset, endPos: c3.offset),
+            painter: LinePainter(start: c2.offset, end: c3.offset),
             child: Container(),
           ),
           CustomPaint(
@@ -170,10 +170,10 @@ class PointPainter extends CustomPainter {
 }
 
 class LinePainter extends CustomPainter {
-  LinePainter({required Offset this.startPos, required Offset this.endPos});
+  LinePainter({required Offset this.start, required Offset this.end});
 
-  Offset startPos;
-  Offset endPos;
+  Offset start;
+  Offset end;
   @override
   void paint(Canvas canvas, Size size) {
     final Paint linePainter = Paint()
@@ -181,7 +181,7 @@ class LinePainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..strokeWidth = 2;
 
-    canvas.drawLine(startPos, endPos, linePainter);
+    canvas.drawLine(start, end, linePainter);
   }
 
   @override
