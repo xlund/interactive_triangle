@@ -74,15 +74,27 @@ class _MovablePointState extends State<MovablePoint> {
       child: Stack(
         children: [
           CustomPaint(
-            painter: TrianglePainter(cPos: Offset(xPos, yPos)),
+            painter: PointPainter(cPos: Offset(xPos, yPos)),
             child: Container(),
           ),
           CustomPaint(
-            painter: TrianglePainter(cPos: Offset(xPos2, yPos2)),
+            painter: LinePainter(startPos: Offset(xPos, yPos), endPos: Offset(xPos2, yPos2)),
             child: Container(),
           ),
           CustomPaint(
-            painter: TrianglePainter(cPos: Offset(xPos3, yPos3)),
+            painter: PointPainter(cPos: Offset(xPos2, yPos2)),
+            child: Container(),
+          ),
+          CustomPaint(
+            painter: LinePainter(startPos: Offset(xPos2, yPos2), endPos: Offset(xPos3, yPos3)),
+            child: Container(),
+          ),
+          CustomPaint(
+            painter: PointPainter(cPos: Offset(xPos3, yPos3)),
+            child: Container(),
+          ),
+          CustomPaint(
+            painter: LinePainter(startPos: Offset(xPos3, yPos3), endPos: Offset(xPos, yPos)),
             child: Container(),
           ),
         ],
@@ -91,8 +103,8 @@ class _MovablePointState extends State<MovablePoint> {
   }
 }
 
-class TrianglePainter extends CustomPainter {
-  TrianglePainter({required Offset this.cPos});
+class PointPainter extends CustomPainter {
+  PointPainter({required Offset this.cPos});
 
   Offset cPos;
   @override
@@ -106,8 +118,27 @@ class TrianglePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(TrianglePainter oldDelegate) => true;
+  bool shouldRepaint(PointPainter oldDelegate) => true;
 
   @override
-  bool shouldRebuildSemantics(TrianglePainter oldDelegate) => false;
+  bool shouldRebuildSemantics(PointPainter oldDelegate) => false;
+}
+
+class LinePainter extends CustomPainter {
+  LinePainter({required Offset this.startPos, required Offset this.endPos});
+
+  Offset startPos;
+  Offset endPos;
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint linePainter = Paint()
+      ..color = Colors.amber
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 2;
+
+    canvas.drawLine(startPos, endPos, linePainter);
+  }
+
+  @override
+  bool shouldRepaint(LinePainter oldDelegate) => true;
 }
