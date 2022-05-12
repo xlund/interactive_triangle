@@ -81,6 +81,10 @@ class _MovablePointState extends State<MovablePoint> {
       child: Stack(
         children: [
           CustomPaint(
+            painter: FillPainter(c1: c1, c2: c2, c3: c3),
+            child: Container(),
+          ),
+          CustomPaint(
             painter: LinePainter(startPos: c1.offset, endPos: c2.offset),
             child: Container(),
           ),
@@ -108,6 +112,30 @@ class _MovablePointState extends State<MovablePoint> {
       ),
     );
   }
+}
+
+class FillPainter extends CustomPainter {
+  FillPainter({required this.c1, required this.c2, required this.c3});
+  Circle c1;
+  Circle c2;
+  Circle c3;
+  Paint painter = Paint()
+    ..color = Color(0xFFDEDEDE)
+    ..style = PaintingStyle.fill;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    Path path = Path();
+    path.moveTo(c1.x, c1.y);
+    path.lineTo(c2.x, c2.y);
+    path.lineTo(c3.x, c3.y);
+    path.close();
+
+    canvas.drawPath(path, painter);
+  }
+
+  @override
+  bool shouldRepaint(FillPainter oldDelegate) => true;
 }
 
 class PointPainter extends CustomPainter {
