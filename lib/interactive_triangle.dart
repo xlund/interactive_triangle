@@ -37,7 +37,7 @@ class _InteractiveTriangleState extends State<InteractiveTriangle> {
   Selected _selected = Selected.none;
   bool _dragging = false;
 
-  bool _insideCircle(double x, double y) {
+  bool _checkSelected({required double x, required double y}) {
     if (c1.isSelected(x, y)) {
       _selected = Selected.c1;
       return true;
@@ -58,7 +58,10 @@ class _InteractiveTriangleState extends State<InteractiveTriangle> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onPanStart: (details) {
-        _dragging = _insideCircle(details.globalPosition.dx, details.globalPosition.dy);
+        _dragging = _checkSelected(
+          x: details.globalPosition.dx,
+          y: details.globalPosition.dy,
+        );
       },
       onPanEnd: (details) {
         _dragging = false;
