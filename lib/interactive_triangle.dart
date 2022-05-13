@@ -131,7 +131,7 @@ class TrianglePainter extends CustomPainter {
   Offset p2;
   Offset p3;
   Paint painter = Paint()
-    ..color = Color(0xFFDEDEDE)
+    ..color = const Color(0xFFDEDEDE)
     ..style = PaintingStyle.fill;
 
   @override
@@ -160,7 +160,7 @@ class PointPainter extends CustomPainter {
       ..color = Colors.white
       ..style = PaintingStyle.fill;
     final Paint strokePainter = Paint()
-      ..color = Color(0xFFFF00CD)
+      ..color = const Color(0xFFFF00CD)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
 
@@ -173,14 +173,14 @@ class PointPainter extends CustomPainter {
 }
 
 class LinePainter extends CustomPainter {
-  LinePainter({required Offset this.start, required Offset this.end});
+  LinePainter({required this.start, required this.end});
 
   Offset start;
   Offset end;
   @override
   void paint(Canvas canvas, Size size) {
     final Paint linePainter = Paint()
-      ..color = Color(0xFFFF00CD)
+      ..color = const Color(0xFFFF00CD)
       ..style = PaintingStyle.fill
       ..strokeWidth = 2;
 
